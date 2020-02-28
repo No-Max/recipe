@@ -1,0 +1,40 @@
+.navigation
+  text-align: center
+  font-size: 18px
+  line-height: 20px
+  color: #fff
+  font-weight: 300
+  padding-bottom: 15px
+  button
+    padding: 0
+    padding-top: 5px
+    padding-left: 5px
+    transition: 0.2s
+  nav
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    a
+      height: 0
+      opacity: 0
+      visibility: hidden
+      transition: 0.2s
+  .active
+    nav
+      a
+        padding: 15px
+        height: 20px
+        opacity: 1
+        visibility: visible
+        &.active
+          color: #ECCE9E
+          padding: 15px
+    button
+      transform: rotate(180deg)
+  nav
+    a.active
+      padding: 5px 15px
+      height: 20px
+      opacity: 1
+      visibility: visible
+      color: #fff

@@ -9,9 +9,8 @@ export default class extends React.Component{
       value: '',
       resultsNumber: this.props.list.length,
     }
-    this.handleChange = this.handleChange.bind(this);
   }
-  handleChange(event) {
+  handleChange = (event) => {
     const value = event.target.value;
     this.setState({value});
     if (value.length > 1) {

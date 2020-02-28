@@ -58,9 +58,8 @@ export default class extends React.Component {
       filteredList: items,
       noItems: false,
     };
-    this.handleListUpdate = this.handleListUpdate.bind(this);
   };
-  handleListUpdate(filteredList) {
+  handleListUpdate = (filteredList) => {
     this.setState({filteredList});
     this.setState({noItems: filteredList.length < 1});
   }
