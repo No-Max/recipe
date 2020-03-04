@@ -1,11 +1,14 @@
 import React from 'react'
+import onClickOutside from 'react-onclickoutside'
 import { NavLink } from 'react-router-dom';
+
+import routes from '../../routes.js';
 
 import './nav.sass'
 
 import navImg from '../../img/icons/nav.svg';
 
-export default class extends React.Component {
+class Nav extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -15,6 +18,9 @@ export default class extends React.Component {
   handleOnClick = () => {
     this.setState({isOpened: !this.state.isOpened});
   }
+  handleClickOutside = () => {
+    this.setState({isOpened: false});
+  }
   render() {
     return (
       <div className="navigation">
@@ -23,18 +29,18 @@ export default class extends React.Component {
             <img src={navImg} alt="Open navigtion"/>
           </button>
           <nav>
-            <NavLink  to="/" activeClassName='active'>
-              Все рецепты
-            </NavLink >
-            <NavLink  to="/test" activeClassName='active'>
-              Создать новый
-            </NavLink >
-            <NavLink  to="/test" activeClassName='active'>
-              Ингредиенты
-            </NavLink >
+            {routes.map((route, index) => {
+              return route.showInMenu && (
+                <NavLink key={index} exact to={route.path} activeClassName='active'>
+                  {route.pageTitle}
+                </NavLink >
+              )}
+            )}
           </nav>
         </div>
       </div>
     );
   }
 }
+
+export default onClickOutside(Nav);
