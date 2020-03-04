@@ -5,18 +5,19 @@ import {
   Route
 } from "react-router-dom";
 
-import Home from './views/Home';
-import Recipe from './views/Recipe';
+import routes from './routes.js';
 
 import Head from './components/Head';
 
-export default function RecipeList (props) {
+
+export default function () {
   return (
     <Router>
       <Head />
       <Switch>
-        <Route exact path="/" component={Home}/>
-        <Route path="/recipe/:id" component={Recipe}/>
+        {routes.map((route, index) => (
+          <Route key={index} exact path={route.path} component={route.component}/>
+        ))}
       </Switch>
     </Router>
   );
