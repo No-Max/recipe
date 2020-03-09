@@ -4,6 +4,7 @@ import Content from '../components/Content';
 import Description from '../components/Description';
 import Ingredients from '../components/Ingredients';
 import Steps from '../components/Steps';
+import Dialog from '../components/Dialog'
 
 const item = {
   id: '1',
@@ -32,6 +33,19 @@ export default class extends React.Component {
   constructor(props) {
     super(props);
     this.id = props.match.params.id
+    this.state = {
+      isDialogVisible: false,
+    };
+  }
+  onActionButtonClick = () => {
+    console.log('item has been removed')
+    this.setState({isDialogVisible: false});
+  }
+  onCancelButtonClick = () => {
+    this.setState({isDialogVisible: false});
+  }
+  handleRemoveButtonClick = () => {
+    this.setState({isDialogVisible: true});
   }
   render(){
     return (
@@ -45,13 +59,20 @@ export default class extends React.Component {
           <Steps steps={item.steps} editable={false} />
         </Content>
         <div className="button-container">
-          <button>
+          <button onClick={this.handleRemoveButtonClick}>
             <i className="icon icon-delete-white"></i><span>Удалить</span>
           </button>
           <button>
             <i className="icon icon-edit-white"></i><span>Редакт.</span>
           </button>
         </div>
+        <Dialog
+          onActionButtonClick={this.onActionButtonClick}
+          onCancelButtonClick={this.onCancelButtonClick}
+          isVisible={this.state.isDialogVisible}
+          actionButtonValue={'Да, удалить'}>
+          Вы уверены?
+        </Dialog>
       </div>
     );
   }
