@@ -1,5 +1,6 @@
 import Home from './views/Home';
 import Recipe from './views/Recipe';
+import Ingredients from './views/Ingredients';
 
 export default [
   {
@@ -17,8 +18,8 @@ export default [
   {
     pageTitle: 'Ингредиенты',
     showInMenu: true,
-    path: '/test1',
-    component: Home,
+    path: '/ingredients',
+    component: Ingredients,
   },
   {
     pageTitle: null,
