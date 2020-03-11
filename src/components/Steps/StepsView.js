@@ -10,7 +10,9 @@ export default function(props) {
         {props.steps.map((item, index) => (
           <li key={item.id} className="list-item">
             <div className="list-num">{index + 1}.</div>
-            <div className="list-text">{item.value}</div>
+            <div className="list-content">
+              <div className="list-text">{item.value}</div>
+            </div>
           </li>
         ))}
       </ul>

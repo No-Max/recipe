@@ -51,7 +51,7 @@
   &-item
     display: flex
     align-items: center
-    &:nth-child(2n+1) .list-text
+    &:nth-child(2n+1) .list-content
       background-color: #EFF0F3
   &-num
     font-size: 14px
@@ -61,5 +61,19 @@
   &-text
     font-size: 12px
     line-height: 16px
+    flex-grow: 1
+  &-content
+    display: flex
+    align-items: center
+    justify-content: space-between
     padding: 10px
     flex-grow: 1
+  &-actions
+    display: flex
+    align-items: center
+    padding-top: 1px
+    button:last-child
+      padding-left: 15px
+    i
+      width: 18px
+      height: 17px
