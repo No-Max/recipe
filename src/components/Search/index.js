@@ -14,13 +14,17 @@ export default class extends React.Component{
     const value = event.target.value;
     this.setState({value});
     if (value.length > 1) {
-      const filteredList = this.props.list.filter(item => item.name.toLowerCase().includes(value.toLowerCase()));
+      const filteredList = this.props.list.filter(item => this.filterFunction(item, value));
       this.props.onListUpdate(filteredList);
       this.setState({resultsNumber: filteredList.length})
     } else {
       this.props.onListUpdate(this.props.list);
       this.setState({resultsNumber: this.props.list.length})
     }
+  }
+  filterFunction (item, seachValue) {
+    const itemString = item.name ? item.name : item.value;
+    return itemString.toLowerCase().includes(seachValue.toLowerCase())
   }
   render() {
     return (
